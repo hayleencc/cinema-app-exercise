@@ -202,17 +202,7 @@ footer div.apps>img {
     height: 17px;
     margin: 3% 10px
 }
-/* 
-@media screen and (min-width: 335px) {
-    div.banner {
-        height: 135px;
-    }
-    button.more-information {
-        padding: 1px 3px;
-        font-size: x-small;
-    }
-  }
-*/
+
 @media screen and (min-width: 575px) {
     button.more-information {
         padding: 2px 4px;
@@ -229,24 +219,3 @@ footer div.apps>img {
 
     }
   } 
-/*
-@media screen and (min-width: 735px) {
-    div.banner {
-        width: 100%;
-        height: 200px;
-    }
-    button.more-information {
-        margin-top: 2px;
-        font-size: medium;
-        padding: 3px 7px;
-    }
-  }
-  @media screen and (min-width: 975px) {
-    div.banner {
-        width: 100%;
-        height: 300px;
-    }
-    button.more-information {
-        top: calc(50% - -12px);
-    }
-  } */
