@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/global.css"/>
+    <link rel="stylesheet" href="../css/global.css" />
     <title>Document</title>
     <script src="../javascript/get-movies.js" type="module"></script>
     <script src="../javascript/constants.js" type="module"></script>
 </head>
+
 <body>
     <header>
         <nav class="about-us">
@@ -35,25 +37,25 @@
     </header>
 
     <div class="banner">
-            <button class="more-information">More Information</button>
-        </div>
+        <button class="more-information">More Information</button>
+    </div>
 
     <div class="filter">
         <div class="city-filter">
             <h3>You are in:</h2>
-            <select required aria-placeholder="Value2">
-                <option value="None" hidden>None</option>
-                <option value="value2">Value 2</option>
-                <option value="value3">Value 3</option>
-            </select>
+                <select required aria-placeholder="Value2">
+                    <option value="None" hidden>None</option>
+                    <option value="value2">Value 2</option>
+                    <option value="value3">Value 3</option>
+                </select>
         </div>
         <div class="local-filter">
             <h3>Theaters:</h2>
-            <select required aria-placeholder="Value2">
-                <option value="None" hidden>None</option>
-                <option value="value2">Value 2</option>
-                <option value="value3">Value 3</option>
-            </select>
+                <select required aria-placeholder="Value2">
+                    <option value="None" hidden>None</option>
+                    <option value="value2">Value 2</option>
+                    <option value="value3">Value 3</option>
+                </select>
         </div>
     </div>
 
@@ -63,6 +65,7 @@
 </body>
 <script type="module">
     import { get_movies } from '../javascript/get-movies.js';
+    import { get_movie_by_id } from '../javascript/get-movie.js';
 
     const createImag = (movie) => {
         const imag = movie.primaryImage.url
@@ -70,7 +73,7 @@
         const imgElement = document.createElement("img");
         imgElement.src = imag
         imgElement.alt = alternativeText
-        return imgElement  
+        return imgElement
     }
 
 
@@ -93,6 +96,23 @@
                 element.appendChild(container);
             })
         });
+
+    document.addEventListener('click', (event) => {
+        if (event.target.className === 'schedules') {
+            const movieId = event.target.getAttribute('data-movie-id')
+            console.log(movieId)
+            get_movie_by_id(movieId).then((data) => {
+                console.log(data)
+            })
+            const windowElement = document.createElement("div")
+            windowElement.className = "window-movie"
+            windowElement.appendChild
+            //window.location.href = `./movie.php?id=${movieId}`
+        }
+    })
+    get_movie_by_id(movie.id).then((data) => {
+        console.log(data)
+    })
 </script>
 <footer>
     <div class="about-us">
@@ -117,4 +137,5 @@
         <img src="../resources/icons/instagram-red.png" alt="">
     </div>
 </footer>
+
 </html>
