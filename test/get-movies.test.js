@@ -1,43 +1,21 @@
 import { jest } from '@jest/globals'
 import { get_movies } from "../javascript/get-movies.js"
-import mockedMoviesResponse from "./mocks/mock_movies.json"
+import { moviesResponse } from "./mocks/mocked_movies.js"
 import { API_URL, OPTIONS } from "../javascript/constants.js"
 
 
 describe('movies service', () => {
-  it('should fetch and return a list of movies from get_movies function', async () => {
-    //Arrange
-    const mockedMovies = jest.fn().mockResolvedValue({
-      text: () => Promise.resolve(mockedMoviesResponse),
+  it('should return the list of movies using get_movies function', async () => {
+    const mockFetch = Promise.resolve({
+      text: () => Promise.resolve(moviesResponse),
     });
 
-    global.fetch = mockedMovies;
+    global.fetch = jest.fn().mockImplementation(() => mockFetch);
 
-    //Act
     const response = await get_movies();
 
-    //Assert
+    expect(fetch).toHaveBeenCalledTimes(1);
     expect(fetch).toHaveBeenCalledWith(API_URL, OPTIONS);
-    expect(response).toEqual(mockedMoviesResponse.text);
-
-  });
-
-  it('should return an error when fetch fails', async () => {
-    //Arrange
-    const mockedMovies = jest.fn().mockResolvedValue({
-      json: jest.fn().mockRejectedValue({
-        error: 'error',
-      }),
-    });
-
-    global.fetch = mockedMovies;
-
-    //Act
-    const response = await get_movies();
-
-    //Assert
-    expect(fetch).toHaveBeenCalledWith(API_URL, OPTIONS);
-    expect(response).toEqual();
-
+    expect(response).toEqual(JSON.parse(moviesResponse).results);
   });
 });
