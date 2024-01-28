@@ -21,4 +21,23 @@ describe('movies service', () => {
     expect(response).toEqual(mockedMoviesResponse.text);
 
   });
+
+  it('should return an error when fetch fails', async () => {
+    //Arrange
+    const mockedMovies = jest.fn().mockResolvedValue({
+      json: jest.fn().mockRejectedValue({
+        error: 'error',
+      }),
+    });
+
+    global.fetch = mockedMovies;
+
+    //Act
+    const response = await get_movies();
+
+    //Assert
+    expect(fetch).toHaveBeenCalledWith(API_URL, OPTIONS);
+    expect(response).toEqual();
+
+  });
 });
