@@ -97,22 +97,7 @@
             })
         });
 
-    document.addEventListener('click', (event) => {
-        if (event.target.className === 'schedules') {
-            const movieId = event.target.getAttribute('data-movie-id')
-            console.log(movieId)
-            get_movie_by_id(movieId).then((data) => {
-                console.log(data)
-            })
-            const windowElement = document.createElement("div")
-            windowElement.className = "window-movie"
-            windowElement.appendChild
-            //window.location.href = `./movie.php?id=${movieId}`
-        }
-    })
-    get_movie_by_id(movie.id).then((data) => {
-        console.log(data)
-    })
+
 </script>
 <footer>
     <div class="about-us">
