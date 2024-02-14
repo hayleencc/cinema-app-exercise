@@ -68,6 +68,14 @@ nav.shop-options {
     height: 18px;
 }
 
+@media screen and (max-width: 736px) {
+    .shop-options {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 nav.options>h3 {
     padding: 0px 10px;
     color: darkred;
@@ -210,12 +218,12 @@ footer div.apps>img {
         top: calc(50% - -20px);
 
     }
-  } 
+}
 
-  @media screen and (min-width: 975px) {
+@media screen and (min-width: 975px) {
     button.more-information {
         padding: 3px 5px;
         top: calc(50% - -35px);
 
     }
-  } 
+}
