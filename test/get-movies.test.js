@@ -15,7 +15,6 @@ describe('movies service', () => {
     global.fetch = jest.fn().mockImplementation(() => mockFetch);
 
     const response = await get_movies();
-
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(fetch).toHaveBeenCalledWith(API_URL, OPTIONS);
     expect(response).toEqual(JSON.parse(moviesResponse).results);
